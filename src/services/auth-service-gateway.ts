@@ -4,7 +4,7 @@ import "rxjs/add/operator/map";
 import { Observable } from "rxjs/Observable";
 import { Configuration } from "../configurations";
 
-export class LogInModel {
+export class logInModel {
   password: string;
   email: string;
  
@@ -21,7 +21,7 @@ export class AuthServiceGateway {
     }
 
     public authenticate = (email, password): Observable<any> => {
-        return this._http.post(this._configuration.ServerWithApiUrl, new LogInModel(password, email)) 
+        return this._http.post(this._configuration.ServerWithApiUrl, new logInModel(password, email)) 
             .map(data => data.json());
     };
 }
