@@ -5,34 +5,35 @@ import 'rxjs/add/operator/map';
 import { AuthServiceGateway } from '../services/auth-service-gateway';
 
 export class User {
-        id:string
-        token :string
-        name :string
-        email :string
-        gender :string
-        role :string
-        isClickWorker:string
+        Id:string
+        Token :string
+        Name :string
+        Email :string
+        Gender :string
+        Role :string
+        IsClickWorker:string
 
     constructor(id:string, token :string, name :string, email :string, gender :string, role :string, isClickWorker:string) {
-        this.name = name;
-        this.email = email;
-        this.id = id;
-        this.gender = gender;
-        this.role= role;
-        this.isClickWorker = isClickWorker;
-        this.token = token;
+        this.Name = name;
+        this.Email = email;
+        this.Id = id;
+        this.Gender = gender;
+        this.Role= role;
+        this.IsClickWorker = isClickWorker;
+        this.Token = token;
     }
 }
 
 @Injectable()
 export class AuthService {
     currentUser: User;
-    loggedIn: boolean;
+    loggedIn: boolean = false;
     constructor(private _authServiceGateway: AuthServiceGateway) {
 
     }
 
     public login(credentials) {
+        this.loggedIn = false;
         if (credentials.email === null || credentials.password === null) {
             return Observable.throw("Please insert credentials");
         } else {
@@ -40,19 +41,17 @@ export class AuthService {
                 this._authServiceGateway.authenticate(credentials.password, credentials.email).subscribe(
                     data => {
                         this.currentUser = data;  
-                        if(this.currentUser.Token != undefined || this.currentUser.Token != ''){
-                            access == true;
+                        if(this.currentUser.Token != undefined && this.currentUser.Token != '' && this.currentUser.Token != null){
+                            this.loggedIn = true;
                         }
-                         observer.next(access);
+                         observer.next(this.loggedIn);
                          observer.complete();
                     },
                     err => {
                         console.log("Oops!");
                     }
                 );
-
-                let access = (credentials.password === "pass" && credentials.email === "email");
-                // this.currentUser = new User('Simon', 'saimon@devdactic.com');               
+                
             });
         }
     }
