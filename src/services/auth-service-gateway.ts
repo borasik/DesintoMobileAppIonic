@@ -9,7 +9,7 @@ export class logInModel {
   email: string;
  
   constructor(password: string, email: string) {
-    this.password = name;
+    this.password = password;
     this.email = email;
   }
 }
@@ -20,7 +20,7 @@ export class AuthServiceGateway {
     constructor(private _http: Http, private _configuration: Configuration) {
     }
 
-    public authenticate = (email, password): Observable<any> => {
+    public authenticate = (password, email): Observable<any> => {
         return this._http.post(this._configuration.ServerWithApiUrl, new logInModel(password, email)) 
             .map(data => data.json());
     };
