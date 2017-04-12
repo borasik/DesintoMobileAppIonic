@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 
 import { AuthService } from '../providers/auth-service';
 import { AuthServiceGateway } from '../services/auth-service-gateway';
+import { DataServiceGateway } from '../services/data-gateway-service';
 import { Configuration } from '../configurations';
 
 import { MyApp } from './app.component';
@@ -43,7 +44,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthService,
     Configuration,
-    AuthServiceGateway
+    AuthServiceGateway,
+    DataServiceGateway
   ]
 })
 export class AppModule {}
