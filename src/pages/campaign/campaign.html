@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Campaigns</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+    </div>
+    <div class="clearfix"></div>
+    <div class="col-sm-6 col-md-4 col-lg-4 col-xs-12 profile_details" *ngFor="let item of items" (click)="itemTapped($event, item)">
+        <div class="well profile_view" style="width:100%">
+              <div class="col-sm-12 col-xs-12">
+                  <div class="left col-xs-7">
+                      <div class="row" style="margin-bottom:10px;">
+                          <div class="col-xs-4"><strong>Name </strong></div>
+                          <div class="col-xs-8">{{item.title}}</div>
+                      </div>
+                      
+                      <div class="row" style="margin-bottom:10px;">
+                          <div class="col-xs-4"><strong>Type </strong></div>
+                          <div class="col-xs-8"></div>
+                      </div>
+                      <div class="row" style="margin-bottom:10px;">
+                          <div class="col-xs-4"><strong>View Price </strong></div>
+                          <div class="col-xs-8"></div>
+                      </div>
+                      <div class="row" style="margin-bottom: 10px;">
+                          <div class="col-xs-4">
+                              <strong>Status </strong>
+                          </div>
+                          <div style="color: #1ABB9C" class="col-xs-8">Viewed</div>
+                      </div>
+                      <div class="row" style="margin-bottom: 10px;">
+                          <div class="col-xs-4">
+                              <strong>Created</strong>
+                          </div>
+                          <div class="col-xs-8"></div>
+                      </div>
+                      <div class="row" style="margin-bottom: 10px;">
+                          <div class="col-xs-4">
+                              <strong>Expiration</strong>
+                          </div>
+                          <div class="col-xs-8">
+                              <span style="color: red;font-weight: bold">Expired</span>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="right col-xs-5 text-center">
+                      <img src="" alt=" Campaign Thumbnail" class="img-thumbnail img-responsive" style="max-width: 15em !important;">
+                  </div>
+              </div>
+         </div>
+    </div>
+  </div>
+  
+</ion-content>

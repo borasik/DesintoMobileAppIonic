@@ -1,19 +1,18 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { CampaignsService } from '../../providers/campaigns-service';
+import { CampaignPage } from '../campaign/campaign';
 
 @Component({
-  selector: 'page-list',
-  templateUrl: 'list.html'
+  selector: 'page-campaigns',
+  templateUrl: 'campaigns.html'
 })
-export class ListPage {
-  selectedItem: any;
+export class CampaignsPage {
   icons: string[];
   items: Array<{title: string, note: string, icon: string}>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    // If we navigated to this page, we will have an item available as a nav param
-    this.selectedItem = navParams.get('item');
-
+  constructor(public navCtrl: NavController, public navParams: NavParams, private _campaignsService: CampaignsService) {
+ 
     // Let's populate this page with some filler content for funzies
     this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
     'american-football', 'boat', 'bluetooth', 'build'];
@@ -29,9 +28,8 @@ export class ListPage {
   }
 
   itemTapped(event, item) {
-    // That's right, we're pushing to ourselves!
-    this.navCtrl.push(ListPage, {
-      item: item
+    this.navCtrl.push(CampaignPage, {
+      campaign: item
     });
   }
 }

@@ -1,0 +1,12 @@
+<ion-header>
+ 
+</ion-header>
+
+<ion-content padding>
+  <h3>Test app availability</h3>
+   <ion-item>
+    <ion-label color="primary">Enter package to check</ion-label>
+    <ion-input placeholder="Package" [(ngModel)]="packageName"></ion-input>
+  </ion-item>
+   <button ion-button secondary (click)="onCheck();">Check</button>
+</ion-content>

@@ -4,24 +4,32 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { HttpModule } from '@angular/http';
 
 import { AuthService } from '../providers/auth-service';
+import { CampaignsService } from '../providers/campaigns-service';
 import { AuthServiceGateway } from '../services/auth-service-gateway';
 import { Configuration } from '../configurations';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
+import { CampaignPage } from '../pages/campaign/campaign';
+import { CampaignsPage } from '../pages/campaigns/campaigns';
 import { LoginPage } from '../pages/login/login';
+import { TestPage } from '../pages/appavailabilitytest/test';
 import { LandingPage } from '../pages/landing/landing';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { AppAvailability } from '@ionic-native/app-availability';
+import { Platform } from 'ionic-angular';
+
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    ListPage,
+    CampaignsPage,
+    CampaignPage,
     LoginPage,
+    TestPage,
     LandingPage
   ],
   imports: [
@@ -33,15 +41,19 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage,
+    CampaignsPage,
+    CampaignPage,
     LoginPage,
+    TestPage,
     LandingPage
   ],
   providers: [
     StatusBar,
+    AppAvailability,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthService,
+    CampaignsService,
     Configuration,
     AuthServiceGateway
   ]
