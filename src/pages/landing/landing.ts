@@ -14,7 +14,6 @@ export class LandingPage {
 
   }
 
-
   onLogin() {
     this.navCtrl.push(this.loginPage);
   }

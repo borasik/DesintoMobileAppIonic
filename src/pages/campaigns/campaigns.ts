@@ -1,7 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { CampaignsService } from '../../providers/campaigns-service';
 import { CampaignPage } from '../campaign/campaign';
+import { DataServiceGateway } from '../../services/data-gateway-service';
+import { CustomerCampaignsRequest } from '../../models/customer-campaigns-request';
+import { LoginPage } from '../../pages/login/login';
 
 @Component({
   selector: 'page-campaigns',

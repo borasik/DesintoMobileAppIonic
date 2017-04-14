@@ -6,6 +6,7 @@ import { HttpModule } from '@angular/http';
 import { AuthService } from '../providers/auth-service';
 import { CampaignsService } from '../providers/campaigns-service';
 import { AuthServiceGateway } from '../services/auth-service-gateway';
+import { DataServiceGateway } from '../services/data-gateway-service';
 import { Configuration } from '../configurations';
 
 import { MyApp } from './app.component';
@@ -55,7 +56,8 @@ import { Platform } from 'ionic-angular';
     AuthService,
     CampaignsService,
     Configuration,
-    AuthServiceGateway
+    AuthServiceGateway,
+    DataServiceGateway
   ]
 })
 export class AppModule {}
