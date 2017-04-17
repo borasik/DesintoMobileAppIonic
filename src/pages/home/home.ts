@@ -12,9 +12,10 @@ import { CustomerCampaignsRequest } from '../../models/customer-campaigns-reques
 })
 export class HomePage implements OnInit {
   loginPage = LoginPage;
+  campaigns: any;
 
   constructor(private dataServiceGateway: DataServiceGateway, public navCtrl: NavController) {
-
+   
   }
 
   ngOnInit() {
@@ -28,16 +29,13 @@ export class HomePage implements OnInit {
     var customerCampaignModel = new CustomerCampaignsRequest(token);
     this.dataServiceGateway.post("customercampaignsapi/getcampaigns", customerCampaignModel).subscribe(
       (response) => {
-        /* this function is executed every time there's a new output */
-        console.log("VALUE RECEIVED: " + response);
+        this.campaigns = JSON.parse(JSON.stringify(response.campaigns));
       },
       (err) => {
-        /* this function is executed when there's an ERROR */
-        console.log("ERROR: " + err);
+        console.log("Home.ts Campaings List Loading Error: " + err);
       },
       () => {
-        /* this function is executed when the observable ends (completes) its stream */
-        console.log("COMPLETED");
+
       });
   }
 }
