@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, AlertController, LoadingController, Loading } from 'ionic-angular';
 import { AuthService } from '../../providers/auth-service';
 import { HomePage } from '../home/home';
+import { CampaignsPage } from '../campaigns/campaigns';
 
 @Component({
   selector: 'page-login',
@@ -9,7 +10,7 @@ import { HomePage } from '../home/home';
 })
 export class LoginPage {
   loading: Loading;
-  homePage = HomePage;
+  homePage = CampaignsPage;
   registerCredentials = { email: '', password: '' };
 
   constructor(public navCtrl: NavController, private auth: AuthService, private alertCtrl: AlertController, private loadingCtrl: LoadingController) {

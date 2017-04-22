@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { CampaignsService } from '../../providers/campaigns-service';
 import { CampaignPage } from '../campaign/campaign';
 import { DataServiceGateway } from '../../services/data-gateway-service';
 import { CustomerCampaignsRequest } from '../../models/customer-campaigns-request';
@@ -12,27 +11,53 @@ import { LoginPage } from '../../pages/login/login';
 })
 export class CampaignsPage {
   icons: string[];
-  items: Array<{title: string, note: string, icon: string}>;
+  campaigns: object[];
+  thumpUrlPrefix : any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private _campaignsService: CampaignsService) {
- 
-    // Let's populate this page with some filler content for funzies
-    this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
-    'american-football', 'boat', 'bluetooth', 'build'];
+  constructor(public navCtrl: NavController, public navParams: NavParams, private dataServiceGateway: DataServiceGateway) {
+    this.campaigns = [];
+    this.thumpUrlPrefix = "http://www.desinto.com";
 
-    this.items = [];
-    for (let i = 1; i < 11; i++) {
-      this.items.push({
-        title: 'Item ' + i,
-        note: 'This is item #' + i,
-        icon: this.icons[Math.floor(Math.random() * this.icons.length)]
-      });
+    var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    if (currentUser === null) {
+      //this.navCtrl.push(this.loginPage);
     }
+
+    var token = currentUser.token;
+
+    var customerCampaignModel = new CustomerCampaignsRequest(token);
+    this.dataServiceGateway.post("customercampaignsapi/getcampaigns", customerCampaignModel).subscribe(
+      (response) => {
+        /* this function is executed every time there's a new output */
+        console.log("VALUE RECEIVED: " + response);
+        this.campaigns = response.campaigns;
+      },
+      (err) => {
+        /* this function is executed when there's an ERROR */
+        console.log("ERROR: " + err);
+      },
+      () => {
+        /* this function is executed when the observable ends (completes) its stream */
+        console.log("COMPLETED");
+      });
   }
 
-  itemTapped(event, item) {
+  itemTapped(event, campaign) {
     this.navCtrl.push(CampaignPage, {
-      campaign: item
+      campaign: campaign
     });
+  }
+
+  contentType(campaign){
+    switch(campaign.ContentType){
+      case 0:
+        return "URL";
+      case 1:
+        return "Flyer";
+      case 2:
+        return "Downloads Rewards";
+      default:
+        return "N/A";
+    } 
   }
 }

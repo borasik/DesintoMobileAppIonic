@@ -7,55 +7,56 @@
   </ion-navbar>
 </ion-header>
 
+
+
 <ion-content>
-  <div class="row">
-    <div class="col-md-12 col-sm-12 col-xs-12 text-center">
-    </div>
-    <div class="clearfix"></div>
-    <div class="col-sm-6 col-md-4 col-lg-4 col-xs-12 profile_details" *ngFor="let item of items" (click)="itemTapped($event, item)">
-        <div class="well profile_view" style="width:100%">
-              <div class="col-sm-12 col-xs-12">
-                  <div class="left col-xs-7">
-                      <div class="row" style="margin-bottom:10px;">
-                          <div class="col-xs-4"><strong>Name </strong></div>
-                          <div class="col-xs-8">{{item.title}}</div>
-                      </div>
-                      
-                      <div class="row" style="margin-bottom:10px;">
+    <ion-grid>
+        <ion-row>
+            <ion-col col-12 col-sm-9 col-md-4 col-lg-2 col-xl-2>
+                <ion-card *ngFor="let campaign of campaigns" (click)="itemTapped($event, campaign)">
+                    <img src="{{thumpUrlPrefix + campaign.ThumbUrl}}"/>
+                    <ion-card-content>
+                        <ion-card-title>
+                        {{campaign.Name}}
+                        </ion-card-title>
+                        <p>
+                        {{campaign.Description}}
+                        </p>
+                        <div class="row" style="margin-bottom:10px;">
                           <div class="col-xs-4"><strong>Type </strong></div>
-                          <div class="col-xs-8"></div>
-                      </div>
-                      <div class="row" style="margin-bottom:10px;">
-                          <div class="col-xs-4"><strong>View Price </strong></div>
-                          <div class="col-xs-8"></div>
-                      </div>
-                      <div class="row" style="margin-bottom: 10px;">
-                          <div class="col-xs-4">
-                              <strong>Status </strong>
-                          </div>
-                          <div style="color: #1ABB9C" class="col-xs-8">Viewed</div>
-                      </div>
-                      <div class="row" style="margin-bottom: 10px;">
-                          <div class="col-xs-4">
-                              <strong>Created</strong>
-                          </div>
-                          <div class="col-xs-8"></div>
-                      </div>
-                      <div class="row" style="margin-bottom: 10px;">
-                          <div class="col-xs-4">
-                              <strong>Expiration</strong>
-                          </div>
-                          <div class="col-xs-8">
-                              <span style="color: red;font-weight: bold">Expired</span>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="right col-xs-5 text-center">
-                      <img src="" alt=" Campaign Thumbnail" class="img-thumbnail img-responsive" style="max-width: 15em !important;">
-                  </div>
-              </div>
-         </div>
-    </div>
-  </div>
-  
+                          <div *ngIf="campaign.ContentType == 0" class="col-xs-8">Url</div>
+                          <div *ngIf="campaign.ContentType == 1" class="col-xs-8">Flyer</div>
+                          <div *ngIf="campaign.ContentType == 2" class="col-xs-8">Downloads Rewards</div>
+                        </div>
+                        <div class="row" style="margin-bottom:10px;">
+                            <div class="col-xs-4"><strong>View Price </strong></div>
+                            <div class="col-xs-8">{{campaign.ViewPrice}}</div>
+                        </div>
+                        <div class="row" style="margin-bottom: 10px;">
+                            <div class="col-xs-4">
+                                <strong>Status </strong>
+                            </div>
+                            <div *ngIf="campaign.IsViewed" style="color: #1ABB9C" class="col-xs-8">Viewed</div>
+                            <div *ngIf="!campaign.IsViewed" style="color: red" class="col-xs-8">Not Viewed</div>
+                        </div>
+                        <div class="row" style="margin-bottom: 10px;">
+                            <div class="col-xs-4">
+                                <strong>Created</strong>
+                            </div>
+                            <div class="col-xs-8">{{campaign.Created}}</div>
+                        </div>
+                        <div *ngIf="campaign.ExpirationDate != null" class="row" style="margin-bottom: 10px;">
+                            <div class="col-xs-4">
+                                <strong>Expiration</strong>
+                            </div>
+                            <div class="col-xs-8">
+                                {{campaign.ExpirationDate}}
+                                <span *ngIf="campaign.IsExpired" style="color: red;font-weight: bold">Expired</span>
+                            </div>
+                        </div>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 </ion-content>
