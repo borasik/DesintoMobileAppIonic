@@ -21,6 +21,10 @@ export class CampaignsPage {
     var currentUser = JSON.parse(localStorage.getItem('currentUser'));
     if (currentUser === null) {
       //this.navCtrl.push(this.loginPage);
+
+
+
+      
     }
 
     var token = currentUser.token;
