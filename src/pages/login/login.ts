@@ -17,35 +17,35 @@ export class LoginPage {
 
   }
 
-public login() {
+  public login() {
     this.showLoading()
     this.auth.login(this.registerCredentials).subscribe(allowed => {
       if (allowed) {
         setTimeout(() => {
-        this.loading.dismiss();
-        this.navCtrl.setRoot(this.homePage)
+          this.loading.dismiss();
+          this.navCtrl.setRoot(this.homePage)
         });
       } else {
         this.showError("Access Denied");
       }
     },
-    error => {
-      this.showError(error);
-    });
+      error => {
+        this.showError("Something went wrong. Please try again");
+      });
   }
- 
+
   showLoading() {
     this.loading = this.loadingCtrl.create({
       content: 'Please wait...'
     });
     this.loading.present();
   }
- 
+
   showError(text) {
     setTimeout(() => {
       this.loading.dismiss();
     });
- 
+
     let alert = this.alertCtrl.create({
       title: 'Fail',
       subTitle: text,

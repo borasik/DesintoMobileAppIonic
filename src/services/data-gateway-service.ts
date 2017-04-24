@@ -28,7 +28,6 @@ export class DataServiceGateway {
     }
 
     var token = currentUser.token;
-
     let headers = new Headers();
     this.createAuthorizationHeader(headers, token);
     let options = new RequestOptions({headers: headers});

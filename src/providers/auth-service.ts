@@ -55,7 +55,7 @@ export class AuthService {
                         observer.complete();
                     },
                     err => {
-                        console.log("Oops!");
+                          observer.next(this.loggedIn);
                     }
                 );
 
