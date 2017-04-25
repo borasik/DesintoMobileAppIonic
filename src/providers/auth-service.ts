@@ -80,8 +80,9 @@ export class AuthService {
     }
 
     public logout() {
-        return Observable.create(observer => {
+        return Observable.create(observer => {                
             this.currentUser = null;
+            localStorage.removeItem('currentUser');              
             observer.next(true);
             observer.complete();
         });

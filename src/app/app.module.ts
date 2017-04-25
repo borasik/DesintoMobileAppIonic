@@ -17,7 +17,7 @@ import { CampaignsPage } from '../pages/campaigns/campaigns';
 import { LoginPage } from '../pages/login/login';
 import { TestPage } from '../pages/appavailabilitytest/test';
 import { LandingPage } from '../pages/landing/landing';
-
+import { LogoutPage } from '../pages/logout/logout.component';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -32,7 +32,8 @@ import { Platform } from 'ionic-angular';
     CampaignPage,
     LoginPage,
     TestPage,
-    LandingPage
+    LandingPage,
+    LogoutPage
   ],
   imports: [
     BrowserModule,
@@ -48,13 +49,14 @@ import { Platform } from 'ionic-angular';
     CampaignPage,
     LoginPage,
     TestPage,
-    LandingPage
+    LandingPage,
+    LogoutPage
   ],
   providers: [
     StatusBar,
     AppAvailability,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
     AuthService,
     CampaignsService,
     Configuration,
@@ -62,4 +64,4 @@ import { Platform } from 'ionic-angular';
     DataServiceGateway
   ]
 })
-export class AppModule {}
+export class AppModule { }

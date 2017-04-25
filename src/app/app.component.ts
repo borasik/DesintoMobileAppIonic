@@ -9,6 +9,7 @@ import { CampaignPage } from '../pages/campaign/campaign';
 import { LoginPage } from '../pages/login/login';
 import { TestPage } from '../pages/appavailabilitytest/test';
 import { LandingPage } from '../pages/landing/landing';
+import { LogoutPage } from '../pages/logout/logout.component';
 
 @Component({
   templateUrl: 'app.html'
@@ -26,7 +27,7 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: CampaignsPage },
-      { title: 'Logout', component: LoginPage }
+      { title: 'Logout', component: LogoutPage }
     ];
 
   }

@@ -7,4 +7,5 @@ export class Configuration {
     public ApiAuthUrl: string = "customerregistrationapi/login";
     public ApiCampaignsUrl: string = "customercampaignsapi/getcampaigns";
     public ServerWithApiUrl: string = this.ApiAuthServer + this.ApiAuthUrl;
+    public LoginPageLogo = "http://localhost:8100/assets/images/logo.png";
 } 

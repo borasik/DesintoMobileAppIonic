@@ -3,6 +3,7 @@ import { NavController, AlertController, LoadingController, Loading } from 'ioni
 import { AuthService } from '../../providers/auth-service';
 import { HomePage } from '../home/home';
 import { CampaignsPage } from '../campaigns/campaigns';
+import { Configuration } from "../../configurations";
 
 @Component({
   selector: 'page-login',
@@ -12,8 +13,14 @@ export class LoginPage {
   loading: Loading;
   homePage = CampaignsPage;
   registerCredentials = { email: '', password: '' };
+  private LoginPageLogo: any; 
 
-  constructor(public navCtrl: NavController, private auth: AuthService, private alertCtrl: AlertController, private loadingCtrl: LoadingController) {
+  constructor(public navCtrl: NavController, 
+              private auth: AuthService, 
+              private alertCtrl: AlertController, 
+              private loadingCtrl: LoadingController, 
+              private configurations: Configuration) {
+              this.LoginPageLogo = this.configurations.LoginPageLogo;
 
   }
 
