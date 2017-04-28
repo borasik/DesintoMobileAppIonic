@@ -4,29 +4,37 @@ import { AuthService } from '../../providers/auth-service';
 import { LoginPage } from '../login/login';
 
 @Component({
-    selector: 'page-logout',
-    templateUrl: 'logout.component.html'
+  selector: 'page-logout',
+  templateUrl: 'logout.component.html'
 })
 export class LogoutPage implements OnInit {
 
-    private loading: Loading;
-    private loginPage = LoginPage;
+  private loading: Loading;
+  private loginPage = LoginPage;
+  private token: string;
+  constructor(private authService: AuthService,
+    private alertCtrl: AlertController,
+    private loadingCtrl: LoadingController,
+    private navCtrl: NavController
+  ) {
 
-    constructor(private authService: AuthService,
-        private alertCtrl: AlertController,
-        private loadingCtrl: LoadingController,
-        private navCtrl: NavController
-    ) {
+  }
 
+  ngOnInit() {
+    this.showLoading()
+    
+    try {
+      this.token = (JSON.parse(localStorage.getItem('currentUser'))).token;
+    }
+    catch (exception){
+      this.navCtrl.setRoot(this.loginPage)
     }
 
-    ngOnInit() {
-        this.showLoading()
-        this.authService.logout().subscribe(loggedout => {
+    this.authService.logout(this.token).subscribe(loggedout => {
       if (loggedout) {
         setTimeout(() => {
-           this.loading.dismiss();
-           this.navCtrl.setRoot(this.loginPage)
+          this.loading.dismiss();
+          this.navCtrl.setRoot(this.loginPage)
         });
       } else {
         this.showError("Logging Out Failed, Please Try Again Later");
@@ -36,18 +44,18 @@ export class LogoutPage implements OnInit {
         this.showError("Logging Out Failed, Please Try Again Later");
       });
 
-       
-    }
 
-    showLoading() {
-        this.loading = this.loadingCtrl.create({
-            content: 'Please wait...'
-        });
-        this.loading.present();
-    }
+  }
+
+  showLoading() {
+    this.loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+    this.loading.present();
+  }
 
 
- showError(text) {
+  showError(text) {
     setTimeout(() => {
       this.loading.dismiss();
     });

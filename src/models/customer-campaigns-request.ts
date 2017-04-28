@@ -1,7 +1,7 @@
 
 export class CustomerCampaignsRequest {
-    Token: string
-    DownloadRewards: boolean
+    public DownloadRewards: boolean
+    public Token: string
     constructor(public token: string) {
         this.Token = token;
         this.DownloadRewards = true;

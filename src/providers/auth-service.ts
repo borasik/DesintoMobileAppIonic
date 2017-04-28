@@ -55,7 +55,7 @@ export class AuthService {
                         observer.complete();
                     },
                     err => {
-                          observer.next(this.loggedIn);
+                        observer.next(this.loggedIn);
                     }
                 );
 
@@ -79,10 +79,16 @@ export class AuthService {
         return this.currentUser;
     }
 
-    public logout() {
-        return Observable.create(observer => {                
-            this.currentUser = null;
-            localStorage.removeItem('currentUser');              
+    public logout(token: string) {
+        return Observable.create(observer => {
+            this._authServiceGateway.logout(token).subscribe(result => {
+                observer.next(result);
+                observer.complete();
+            },
+                err => {
+                    observer.next(false);
+                });
+            localStorage.removeItem('currentUser');
             observer.next(true);
             observer.complete();
         });
