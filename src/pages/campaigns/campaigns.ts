@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Pipe } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { CampaignPage } from '../campaign/campaign';
 import { DataServiceGateway } from '../../services/data-gateway-service';
 import { CustomerCampaignsRequest } from '../../models/customer-campaigns-request';
 import { LoginPage } from '../login/login';
 
+
 @Component({
-  selector: 'page-campaigns',
+  selector: 'page-campaigns', 
   templateUrl: 'campaigns.html'
 })
 export class CampaignsPage {

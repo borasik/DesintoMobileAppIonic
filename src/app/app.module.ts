@@ -24,6 +24,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { AppAvailability } from '@ionic-native/app-availability';
 import { Platform } from 'ionic-angular';
 
+import { TruncatePipe } from '../pipes/truncate-pipe';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -33,7 +35,8 @@ import { Platform } from 'ionic-angular';
     LoginPage,
     TestPage,
     LandingPage,
-    LogoutPage
+    LogoutPage,
+    TruncatePipe
   ],
   imports: [
     BrowserModule,
