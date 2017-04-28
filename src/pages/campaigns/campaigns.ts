@@ -3,7 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { CampaignPage } from '../campaign/campaign';
 import { DataServiceGateway } from '../../services/data-gateway-service';
 import { CustomerCampaignsRequest } from '../../models/customer-campaigns-request';
-import { LoginPage } from '../../pages/login/login';
+import { LoginPage } from '../login/login';
 
 @Component({
   selector: 'page-campaigns',
@@ -13,21 +13,20 @@ export class CampaignsPage {
   icons: string[];
   campaigns: object[];
   thumpUrlPrefix : any;
+  private loginPage = LoginPage;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private dataServiceGateway: DataServiceGateway) {
     this.campaigns = [];
-    this.thumpUrlPrefix = "http://www.desinto.com";
+    this.thumpUrlPrefix = "http://www.desinto.com";    
 
-    var currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    if (currentUser === null) {
-      //this.navCtrl.push(this.loginPage);
-
-
-
-      
+   
+    let token: string;
+    try {
+      token = (JSON.parse(localStorage.getItem('currentUser'))).token;      
     }
-
-    var token = currentUser.token;
+    catch (exception) {
+      this.navCtrl.setRoot(this.loginPage);
+    }
 
     var customerCampaignModel = new CustomerCampaignsRequest(token);
     this.dataServiceGateway.post("customercampaignsapi/getcampaigns", customerCampaignModel).subscribe(

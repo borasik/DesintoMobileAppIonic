@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavController, AlertController, LoadingController, Loading } from 'ionic-angular';
 import { AuthService } from '../../providers/auth-service';
 import { HomePage } from '../home/home';
@@ -9,19 +9,30 @@ import { Configuration } from "../../configurations";
   selector: 'page-login',
   templateUrl: 'login.html'
 })
-export class LoginPage {
+export class LoginPage implements OnInit {
   loading: Loading;
   homePage = CampaignsPage;
   registerCredentials = { email: '', password: '' };
-  private LoginPageLogo: any; 
+  private LoginPageLogo: any;
 
-  constructor(public navCtrl: NavController, 
-              private auth: AuthService, 
-              private alertCtrl: AlertController, 
-              private loadingCtrl: LoadingController, 
-              private configurations: Configuration) {
-              this.LoginPageLogo = this.configurations.LoginPageLogo;
+  constructor(public navCtrl: NavController,
+    private auth: AuthService,
+    private alertCtrl: AlertController,
+    private loadingCtrl: LoadingController,
+    private configurations: Configuration) {
+    this.LoginPageLogo = this.configurations.LoginPageLogo;
 
+  }
+
+  ngOnInit() {
+    let token: string;
+    try {
+      token = (JSON.parse(localStorage.getItem('currentUser'))).token;
+      this.navCtrl.setRoot(this.homePage);
+    }
+    catch (exception) {
+
+    }
   }
 
   public login() {
