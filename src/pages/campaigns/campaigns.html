@@ -12,9 +12,9 @@
 <ion-content>
     <ion-grid>
         <ion-row>
-            <ion-col col-12 col-sm-9 col-md-4 col-lg-2 col-xl-2>
+         
                 <ion-card *ngFor="let campaign of campaigns" (click)="itemTapped($event, campaign)">
-                    <img src="{{thumpUrlPrefix + campaign.ThumbUrl}}" />
+                    <img src='{{thumpUrlPrefix + campaign.ThumbUrl}}' />
                     <ion-card-content>
                         <ion-card-title>
                             {{campaign.Name | truncate : [20, '...']}}
@@ -52,7 +52,7 @@
                         </ion-grid>
                     </ion-card-content>
                 </ion-card>
-                </ion-col>
+            
         </ion-row>
     </ion-grid>
 </ion-content>
