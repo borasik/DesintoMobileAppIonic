@@ -7,6 +7,7 @@ import { Platform } from 'ionic-angular';
 import { MarkCampaingAsVisitedRequest } from '../../models/mark-campaing-as-visited-request';
 import { DataServiceGateway } from '../../services/data-gateway-service';
 import { LoginPage } from '../login/login';
+import { Configuration } from "../../configurations";
 
 @Component({
   selector: 'page-campaign',
@@ -21,8 +22,13 @@ export class CampaignPage implements OnInit {
    private loginPage = LoginPage;
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private appAvailability: AppAvailability, private dataServiceGateway: DataServiceGateway) {
-    this.thumpUrlPrefix = "http://www.desinto.com";
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    private appAvailability: AppAvailability, 
+    private dataServiceGateway: DataServiceGateway,
+    private configurations: Configuration) {
+    this.thumpUrlPrefix = configurations.ApiServer;
     // If we navigated to this page, we will have an item available as a nav param
     this.campaign = navParams.get('campaign');
 
@@ -49,7 +55,7 @@ export class CampaignPage implements OnInit {
     var currentUser = JSON.parse(localStorage.getItem('currentUser'));
     var token = currentUser.token;
 
-    var markCampaingAsVisitedRequestModel = new MarkCampaingAsVisitedRequest(token, this.campaign.SystemCampaignId);
+    var markCampaingAsVisitedRequestModel = new MarkCampaingAsVisitedRequest(token, this.campaign.Id);
     this.dataServiceGateway.post("customercampaignsapi/markcustomercampaignvisited", markCampaingAsVisitedRequestModel).subscribe(
       (response) => {
         /* this function is executed every time there's a new output */
@@ -65,6 +71,11 @@ export class CampaignPage implements OnInit {
         /* this function is executed when the observable ends (completes) its stream */
         console.log("COMPLETED");
       });
+  }
+
+  public validateInstallation() : void {
+    this.checkIfApplicationInstalled(this.campaign);
+    //this.markApplicationInstalled(this.campaign);
   }
 
   ngOnInit(){
