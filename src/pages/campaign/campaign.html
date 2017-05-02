@@ -8,24 +8,27 @@
 </ion-header>
 
 <ion-content>
+  <ion-row>
+    <ion-col col-xs-2 offset-xs-5 col-xl-2 offset-xl-5>
   <ion-card>
-  <img src="{{thumpUrlPrefix + campaign.ThumbUrl}}"/>
-  <ion-card-content>
-    <ion-card-title>
-      {{campaign.Name}}
+    <img src="{{thumpUrlPrefix + campaign.ThumbUrl}}" />
+    <ion-card-content>
+      <ion-card-title>
+        {{campaign.Name}}
       </ion-card-title>
-    <p>
-      {{campaign.Description}}
-    </p>
-    <!-- Float the icon right -->
-    <a  class="btn btn-info" href="{{'http://play.google.com/store/apps/details?id='+campaign.ApplicationName}}">
-        <ion-icon  ios="logo-android" md="logo-android"></ion-icon>
+      <p>
+        {{campaign.Description}}
+      </p>
+      <!-- Float the icon right -->
+      <a class="btn btn-info" href="{{'http://play.google.com/store/apps/details?id='+campaign.ApplicationName}}">
+        <ion-icon ios="logo-android" md="logo-android"></ion-icon>
         Install
-    </a>
-    <div *ngIf="campaignViewed == true">
+      </a>
+      <div *ngIf="campaignViewed == true">
         Code: {{campaign.ClickWorkerConfirmationCode}}
-    </div>
-  </ion-card-content>
-</ion-card>
-  
+      </div>
+    </ion-card-content>
+  </ion-card>
+    </ion-col>
+  </ion-row>
 </ion-content>
