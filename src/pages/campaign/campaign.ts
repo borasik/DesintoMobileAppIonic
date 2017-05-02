@@ -19,7 +19,7 @@ export class CampaignPage implements OnInit {
   items: Array<{title: string, note: string, icon: string}>;
   thumpUrlPrefix : any;
   campaignViewed : Boolean;
-   private loginPage = LoginPage;
+  private loginPage = LoginPage;
 
 
   constructor(

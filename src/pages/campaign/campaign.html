@@ -9,49 +9,42 @@
 
 <ion-content>
   <ion-row>
-    <ion-col col-xs-2 offset-xs-5 col-xl-2 offset-xl-5>
-  <ion-card>
-    <img src="{{thumpUrlPrefix + campaign.ThumbUrl}}" />
-    <ion-card-content>
-      <ion-card-title>
-        {{campaign.Name}}
-      </ion-card-title>
-<<<<<<< HEAD
-      <p>
-        {{campaign.Description}}
-      </p>
-      <!-- Float the icon right -->
-      <a class="btn btn-info" href="{{'http://play.google.com/store/apps/details?id='+campaign.ApplicationName}}">
-        <ion-icon ios="logo-android" md="logo-android"></ion-icon>
-        Install
-      </a>
-      <div *ngIf="campaignViewed == true">
-        Code: {{campaign.ClickWorkerConfirmationCode}}
-      </div>
-    </ion-card-content>
-  </ion-card>
+    <ion-col col-xs-2 offset-xs-5 col-sm-6 offset-sm-3 col-xl-4 offset-xl-4 col-md-6 offset-md-3 col-lg-6 offset-lg-3>
+      <ion-card>
+        <img src="{{thumpUrlPrefix + campaign.ThumbUrl}}" />
+        <ion-card-content>
+          <ion-card-title>
+            <ion-grid>
+              <ion-row>
+                <ion-col col-2></ion-col>
+                <ion-col col-10>{{campaign.Name | truncate : [20, '...']}}</ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card-title>
+          <ion-grid>
+            <ion-row>
+              <ion-col col-4>Description </ion-col>
+              <ion-col col-8> {{campaign.Description | truncate : [20, '...']}}</ion-col>
+            </ion-row>
+            <ion-row>
+              <a ion-button icon-left *ngIf="campaignViewed == false" href="{{'http://play.google.com/store/apps/details?id='+campaign.ApplicationName}}">
+                <ion-icon name="logo-android"></ion-icon>
+                Install
+              </a>
+            </ion-row>
+            <ion-row>
+              <button ion-button icon-left *ngIf="campaignViewed == false" (click)="validateInstallation()">
+                <ion-icon name="logo-android"></ion-icon>
+                Validate installation
+              </button>
+            </ion-row>
+            <ion-row *ngIf="campaignViewed == true">
+              <ion-col col-4>Code </ion-col>
+              <ion-col col-4>Code: {{campaign.ClickWorkerConfirmationCode}}</ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card-content>
+      </ion-card>
     </ion-col>
   </ion-row>
 </ion-content>
-=======
-    <p>
-      {{campaign.Description}}
-    </p>
-    <!-- Float the icon right -->
-    <a ion-button icon-left *ngIf="campaignViewed == false" href="{{'http://play.google.com/store/apps/details?id='+campaign.ApplicationName}}">
-        <ion-icon name="logo-android"></ion-icon>
-        Install
-    </a>
-    <button ion-button icon-left *ngIf="campaignViewed == false" (click)="validateInstallation()">
-        <ion-icon name="logo-android"></ion-icon>
-        Validate installation
-    </button>
-    <div *ngIf="campaignViewed == true">
-        Code: {{campaign.ClickWorkerConfirmationCode}}
-    </div>
-
-  </ion-card-content>
-</ion-card>
-  
-</ion-content>
->>>>>>> 454e7084697910ac0da8406378388118a269706f
