@@ -9,7 +9,7 @@
 
 <ion-content>
   <ion-row>
-    <ion-col col-xs-2 offset-xs-5 col-sm-6 offset-sm-3 col-xl-4 offset-xl-4 col-md-6 offset-md-3 col-lg-6 offset-lg-3>
+    <ion-col col-xs-2 offset-xs-5 col-sm-8 offset-sm-2 col-xl-4 offset-xl-4 col-md-6 offset-md-3 col-lg-6 offset-lg-3>
       <ion-card>
         <img src="{{thumpUrlPrefix + campaign.ThumbUrl}}" />
         <ion-card-content>
@@ -26,14 +26,14 @@
               <ion-col col-4>Description </ion-col>
               <ion-col col-8> {{campaign.Description | truncate : [20, '...']}}</ion-col>
             </ion-row>
-            <ion-row>
-              <a ion-button icon-left *ngIf="campaignViewed == false" href="{{'http://play.google.com/store/apps/details?id='+campaign.ApplicationName}}">
+            <ion-row *ngIf="campaignViewed == false">
+              <a ion-button icon-left href="{{'http://play.google.com/store/apps/details?id='+campaign.ApplicationName}}">
                 <ion-icon name="logo-android"></ion-icon>
                 Install
               </a>
             </ion-row>
-            <ion-row>
-              <button ion-button icon-left *ngIf="campaignViewed == false" (click)="validateInstallation()">
+            <ion-row *ngIf="campaignViewed == false">
+              <button ion-button icon-left (click)="validateInstallation()">
                 <ion-icon name="logo-android"></ion-icon>
                 Validate installation
               </button>
