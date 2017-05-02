@@ -4,7 +4,7 @@ import { CampaignPage } from '../campaign/campaign';
 import { DataServiceGateway } from '../../services/data-gateway-service';
 import { CustomerCampaignsRequest } from '../../models/customer-campaigns-request';
 import { LoginPage } from '../login/login';
-
+import { Configuration } from "../../configurations";
 
 @Component({
   selector: 'page-campaigns', 
@@ -16,10 +16,14 @@ export class CampaignsPage {
   thumpUrlPrefix : any;
   private loginPage = LoginPage;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private dataServiceGateway: DataServiceGateway) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    private dataServiceGateway: DataServiceGateway,
+    private configurations: Configuration
+    ) {
     this.campaigns = [];
-    this.thumpUrlPrefix = "http://www.desinto.com";    
-
+    this.thumpUrlPrefix = configurations.ApiServer;    
    
     let token: string;
     try {

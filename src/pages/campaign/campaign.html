@@ -16,6 +16,7 @@
       <ion-card-title>
         {{campaign.Name}}
       </ion-card-title>
+<<<<<<< HEAD
       <p>
         {{campaign.Description}}
       </p>
@@ -32,3 +33,25 @@
     </ion-col>
   </ion-row>
 </ion-content>
+=======
+    <p>
+      {{campaign.Description}}
+    </p>
+    <!-- Float the icon right -->
+    <a ion-button icon-left *ngIf="campaignViewed == false" href="{{'http://play.google.com/store/apps/details?id='+campaign.ApplicationName}}">
+        <ion-icon name="logo-android"></ion-icon>
+        Install
+    </a>
+    <button ion-button icon-left *ngIf="campaignViewed == false" (click)="validateInstallation()">
+        <ion-icon name="logo-android"></ion-icon>
+        Validate installation
+    </button>
+    <div *ngIf="campaignViewed == true">
+        Code: {{campaign.ClickWorkerConfirmationCode}}
+    </div>
+
+  </ion-card-content>
+</ion-card>
+  
+</ion-content>
+>>>>>>> 454e7084697910ac0da8406378388118a269706f
