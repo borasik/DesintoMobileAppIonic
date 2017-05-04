@@ -27,16 +27,7 @@
                                 <ion-col col-8 *ngIf="campaign.ContentType == 0">Url</ion-col>
                                 <ion-col col-8 *ngIf="campaign.ContentType == 1">Flyer</ion-col>
                                 <ion-col col-8 *ngIf="campaign.ContentType == 2">Downloads Rewards</ion-col>
-                            </ion-row>
-                            <ion-row *ngIf="!campaign.IsViewed">
-                                <ion-col col-4><strong>Click to Install</strong></ion-col>
-                                <ion-col col-8>
-                                    <a class="btn btn-info" href="{{'http://play.google.com/store/apps/details?id='+campaign.ApplicationName}}">
-                                        <ion-icon ios="logo-android" md="logo-android"></ion-icon>
-                                        Install
-                                    </a>
-                                </ion-col>
-                            </ion-row>
+                            </ion-row>                            
                             <ion-row>
                                 <ion-col col-4><strong>View Price </strong></ion-col>
                                 <ion-col col-8>${{campaign.ViewPrice}}</ion-col>
