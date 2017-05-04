@@ -4,7 +4,7 @@ import { CampaignPage } from '../campaign/campaign';
 import { DataServiceGateway } from '../../services/data-gateway-service';
 import { CustomerCampaignsRequest } from '../../models/customer-campaigns-request';
 import { LoginPage } from '../login/login';
-
+import { Configuration } from "../../configurations";
 
 @Component({
   selector: 'page-campaigns', 
@@ -16,11 +16,38 @@ export class CampaignsPage {
   thumpUrlPrefix : any;
   private loginPage = LoginPage;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private dataServiceGateway: DataServiceGateway) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    private dataServiceGateway: DataServiceGateway,
+    private configurations: Configuration
+    ) {
     this.campaigns = [];
-    this.thumpUrlPrefix = "http://www.desinto.com";    
-
+    this.thumpUrlPrefix = configurations.ApiServer;    
    
+    
+  }
+
+  itemTapped(event, campaign) {
+    this.navCtrl.push(CampaignPage, {
+      campaign: campaign
+    });
+  }
+
+  contentType(campaign){
+    switch(campaign.ContentType){
+      case 0:
+        return "URL";
+      case 1:
+        return "Flyer";
+      case 2:
+        return "Downloads Rewards";
+      default:
+        return "N/A";
+    } 
+  }
+
+  ionViewWillEnter() {
     let token: string;
     try {
       token = (JSON.parse(localStorage.getItem('currentUser'))).token;      
@@ -44,24 +71,5 @@ export class CampaignsPage {
         /* this function is executed when the observable ends (completes) its stream */
         console.log("COMPLETED");
       });
-  }
-
-  itemTapped(event, campaign) {
-    this.navCtrl.push(CampaignPage, {
-      campaign: campaign
-    });
-  }
-
-  contentType(campaign){
-    switch(campaign.ContentType){
-      case 0:
-        return "URL";
-      case 1:
-        return "Flyer";
-      case 2:
-        return "Downloads Rewards";
-      default:
-        return "N/A";
-    } 
   }
 }
