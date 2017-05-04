@@ -25,12 +25,12 @@
               <ion-col col-4 >Description </ion-col>
               <ion-col col-8 > {{campaign.Description | truncate : [20, '...']}}</ion-col>
             </ion-row>            
-            <ion-row *ngIf="!campaignViewed == true">
+            <ion-row *ngIf="campaignViewed == true">
               <ion-col col-4 >Code </ion-col>
               <ion-col col-4 >{{campaign.ClickWorkerConfirmationCode}}</ion-col>
             </ion-row>
           </ion-grid>          
-          <ion-row *ngIf="!campaignViewed == false" style="margin-top: 30px;">
+          <ion-row *ngIf="campaignViewed == false" style="margin-top: 30px;">
             <ion-col col-6 offset-3>
               <div class="round-button">
                 <div class="round-button-circle">
