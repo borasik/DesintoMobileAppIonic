@@ -33,12 +33,6 @@ export class CampaignPage implements OnInit {
     this.campaign = navParams.get('campaign');
 
     this.campaignViewed = false;
-
-    if(this.campaign.IsViewed){
-      this.campaignViewed = true;
-    } else {
-      this.checkIfApplicationInstalled(this.campaign);
-    }
   }
 
   checkIfApplicationInstalled(campaign) : void{
@@ -61,6 +55,7 @@ export class CampaignPage implements OnInit {
         /* this function is executed every time there's a new output */
         console.log("VALUE RECEIVED: " + response);
         this.campaignViewed = true;
+        campaign.IsViewed = true;
         // TODO: Here we should reload campaign and update view
       },
       (err) => {
@@ -85,6 +80,14 @@ export class CampaignPage implements OnInit {
     }
     catch (exception) {
       this.navCtrl.setRoot(this.loginPage);
+    }
+  }
+
+  ionViewWillEnter() { 
+    if(this.campaign.IsViewed){
+      this.campaignViewed = true;
+    } else {
+      this.checkIfApplicationInstalled(this.campaign);
     }
   }
 }

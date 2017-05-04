@@ -24,7 +24,7 @@
             <ion-row>
               <ion-col col-4 >Description </ion-col>
               <ion-col col-8 > {{campaign.Description | truncate : [20, '...']}}</ion-col>
-            </ion-row>            
+            </ion-row>
             <ion-row *ngIf="campaignViewed == true">
               <ion-col col-4 >Code </ion-col>
               <ion-col col-4 >{{campaign.ClickWorkerConfirmationCode}}</ion-col>
