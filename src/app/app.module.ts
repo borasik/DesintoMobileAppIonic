@@ -26,6 +26,14 @@ import { Platform } from 'ionic-angular';
 
 import { TruncatePipe } from '../pipes/truncate-pipe';
 
+import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
+
+const cloudSettings: CloudSettings = {
+  'core': {
+    'app_id': 'b3a1adfd'
+  }
+};
+
 @NgModule({
   declarations: [
     MyApp,
@@ -42,7 +50,8 @@ import { TruncatePipe } from '../pipes/truncate-pipe';
     BrowserModule,
     HttpModule,
     CommonModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    CloudModule.forRoot(cloudSettings)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
