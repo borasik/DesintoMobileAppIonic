@@ -3,7 +3,7 @@
         <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-        <ion-title>Campaigns, Total: {{campaigns.length}}</ion-title>
+        <ion-title>My Campaigns List</ion-title>
     </ion-navbar>
 </ion-header>
 
@@ -11,6 +11,11 @@
     <ion-grid>
         <ion-row>
             <ion-col col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-3>
+                <ion-row *ngIf="campaigns.length === 0">
+                    <ion-col text-center>
+                    <h4>Sorry, No Campaigns Available</h4>
+                    </ion-col>
+                </ion-row>
                 <ion-card *ngFor="let campaign of campaigns" (click)="itemTapped($event, campaign)">
                     <img src='{{thumpUrlPrefix + campaign.ThumbUrl}}' />
                     <ion-card-content>
@@ -27,7 +32,7 @@
                                 <ion-col col-8 *ngIf="campaign.ContentType == 0">Url</ion-col>
                                 <ion-col col-8 *ngIf="campaign.ContentType == 1">Flyer</ion-col>
                                 <ion-col col-8 *ngIf="campaign.ContentType == 2">Downloads Rewards</ion-col>
-                            </ion-row>                            
+                            </ion-row>
                             <ion-row>
                                 <ion-col col-4><strong>View Price </strong></ion-col>
                                 <ion-col col-8>${{campaign.ViewPrice}}</ion-col>

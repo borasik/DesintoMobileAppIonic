@@ -1,5 +1,5 @@
 import { Component, OnInit, Pipe } from '@angular/core';
-import { NavController, NavParams, LoadingController, Loading} from 'ionic-angular';
+import { NavController, NavParams, LoadingController, Loading, Platform } from 'ionic-angular';
 import { CampaignPage } from '../campaign/campaign';
 import { DataServiceGateway } from '../../services/data-gateway-service';
 import { CustomerCampaignsRequest } from '../../models/customer-campaigns-request';
@@ -10,6 +10,7 @@ import { Configuration } from "../../configurations";
   selector: 'page-campaigns',
   templateUrl: 'campaigns.html'
 })
+
 export class CampaignsPage {
   icons: string[];
   loading: Loading;
@@ -17,13 +18,9 @@ export class CampaignsPage {
   thumpUrlPrefix: any;
   private loginPage = LoginPage;
 
-  constructor(
-    public navCtrl: NavController,
-     private loadingCtrl: LoadingController,
-    public navParams: NavParams,
-    private dataServiceGateway: DataServiceGateway,
-    private configurations: Configuration
-  ) {
+  constructor(public navCtrl: NavController, private loadingCtrl: LoadingController, public navParams: NavParams, private dataServiceGateway: DataServiceGateway,
+              private configurations: Configuration,  private platform: Platform) 
+  {
     this.campaigns = [];
     this.thumpUrlPrefix = configurations.ApiServer;
   }
@@ -59,9 +56,17 @@ export class CampaignsPage {
 
     var customerCampaignModel = new CustomerCampaignsRequest(token);
     this.dataServiceGateway.post("customercampaignsapi/getcampaigns", customerCampaignModel).subscribe(
-      (response) => {
-        //this.loading.dismiss();
-        this.campaigns = response.campaigns;
+      (response) => {     
+        if (this.platform.is('ios')) {
+          this.campaigns = response.campaigns.filter(x => x.ApplicationPlatform == 2);
+        }
+        else if (this.platform.is('android')) {
+          this.campaigns = response.campaigns.filter(x => x.ApplicationPlatform == 1);
+        }
+        else{
+          this.campaigns = response.campaigns;
+        }
+
       },
       (err) => {
          this.loading.dismiss();

@@ -22,8 +22,7 @@ export class DataServiceGateway {
 
   public post = (url, body): Observable<any> => {
     var currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    if (currentUser === null) {
-      //this.navCtrl.push(this.loginPage);
+    if (currentUser === null) {    
       return Observable.throw("Please Login");
     }
 
