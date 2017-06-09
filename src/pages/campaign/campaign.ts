@@ -27,7 +27,9 @@ export class CampaignPage implements OnInit {
     public navParams: NavParams, 
     private appAvailability: AppAvailability, 
     private dataServiceGateway: DataServiceGateway,
-    private configurations: Configuration) {
+    private configurations: Configuration,
+    private platform: Platform
+    ) {
     this.thumpUrlPrefix = configurations.ApiServer;
     // If we navigated to this page, we will have an item available as a nav param
     this.campaign = navParams.get('campaign');
@@ -66,6 +68,16 @@ export class CampaignPage implements OnInit {
   public validateInstallation() : void {
     this.checkIfApplicationInstalled(this.campaign);
     //this.markApplicationInstalled(this.campaign);
+  }
+
+  public getPlaystoreUrl(campaign){
+    if (this.platform.is('ios')) {
+      return campaign.ApplicationName;
+    }
+    else if (this.platform.is('android')) {
+      return "http://play.google.com/store/apps/details?id="+campaign.ApplicationName;
+    }
+    return "";
   }
 
   ngOnInit(){
