@@ -22,7 +22,15 @@
           </ion-card-title>
           <ion-grid>
             <ion-row>
-              <ion-col col-4 >Description </ion-col>
+              <ion-col col-4 >OS</ion-col>
+              <ion-col col-8 > {{getOSType()}} </ion-col>
+            </ion-row>  
+            <ion-row>
+              <ion-col col-4 >App ID</ion-col>
+              <ion-col col-8 > {{getApplicationId(campaign)}} </ion-col>
+            </ion-row>  
+            <ion-row>
+              <ion-col col-4 >Description</ion-col>
               <ion-col col-8 > {{campaign.Description | truncate : [20, '...']}}</ion-col>
             </ion-row>            
             <ion-row *ngIf="campaignViewed == true">
@@ -35,8 +43,7 @@
               <div class="round-button">
                 <div class="round-button-circle">
                   <a href="{{getPlaystoreUrl(campaign)}}">
-                 Install
-              </a>
+                 Install                  </a>
                 </div>
               </div>
             </ion-col>

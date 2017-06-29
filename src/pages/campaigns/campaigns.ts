@@ -68,10 +68,10 @@ export class CampaignsPage {
     this.dataServiceGateway.post("customercampaignsapi/getcampaigns", customerCampaignModel).subscribe(
       (response) => {
         if (this.platform.is('ios')) {
-          this.campaigns = response.campaigns.filter(x => x.ApplicationPlatform == 2);//IGOR Add URL and Flyer Campaigns
+          this.campaigns = response.campaigns.filter(x => (x.ApplicationPlatform == 2 || x.ContentType == 0));//IGOR Add URL and Flyer Campaigns
         }
         else if (this.platform.is('android')) {
-          this.campaigns = response.campaigns.filter(x => x.ApplicationPlatform == 1);//IGOR Add URL and Flyer Campaigns
+          this.campaigns = response.campaigns.filter(x => (x.ApplicationPlatform == 1 || x.ContentType == 0));//IGOR Add URL and Flyer Campaigns
         }
         else {
           this.campaigns = response.campaigns;
