@@ -1,5 +1,23 @@
 page-login {
 
+@media (max-width: 300px) {
+    html { font-size: 70%; }
+}
+
+@media (min-width: 500px) {
+    html { font-size: 80%; }
+}
+
+@media (min-width: 700px) {
+    html { font-size: 120%; }
+}
+
+@media (min-width: 1200px) {
+    ion-input{ font-size: 30px; }
+
+    #submitBtn { font-size: 30px; }
+}
+
     img{
      max-width: none;       
     }

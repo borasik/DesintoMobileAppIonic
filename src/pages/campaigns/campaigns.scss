@@ -1,5 +1,27 @@
 page-campaigns {
 
+@media (max-width: 300px) {
+    html { font-size: 70%; }
+}
+
+@media (min-width: 500px) {
+    html { font-size: 80%; }
+}
+
+@media (min-width: 700px) {
+    html { font-size: 120%; }
+}
+
+@media (min-width: 1200px) {
+   ion-col{font-size:200%}
+   .toolbar-title {
+     font-size:40px !important;
+   }
+   .button-inner{
+      font-size:40px !important;
+   }
+}
+
 .well {
     min-height: 20px;
     padding: 19px;
