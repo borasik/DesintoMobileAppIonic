@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Campaigns</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-row>
+    <ion-col col-xs-2 offset-xs-5 col-sm-8 offset-sm-2 col-xl-4 offset-xl-4 col-md-6 offset-md-3 col-lg-6 offset-lg-3>
+      <ion-card id='ion-card-main'>
+        <img src="{{thumpUrlPrefix + campaign.ThumbUrl}}" />
+        <ion-card-content>
+          <ion-card-title>
+            <ion-grid>
+              <ion-row>
+                <ion-col col-12>{{campaign.Name | truncate : [20, '...']}}</ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card-title>
+          <ion-grid>
+            <ion-row>
+              <ion-col col-4>Description </ion-col>
+              <ion-col col-8> {{campaign.Description | truncate : [20, '...']}}</ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col col-4><strong>Type </strong></ion-col>
+              <ion-col col-8 *ngIf="campaign.ContentType == 0">Url</ion-col>
+              <ion-col col-8 *ngIf="campaign.ContentType == 1">Flyer</ion-col>
+              <ion-col col-8 *ngIf="campaign.ContentType == 2">Downloads Rewards</ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col col-4><strong>View Price </strong></ion-col>
+              <ion-col col-8>${{campaign.ViewPrice}}</ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col col-4><strong>Status </strong></ion-col>
+              <ion-col col-8 *ngIf="campaign.IsViewed" style="color: #1ABB9C">Viewed <span style='color: red;' *ngIf="campaignIsExpired == true">Expired</span></ion-col>
+              <ion-col col-8 *ngIf="!campaign.IsViewed" style="color: red">Not Viewed</ion-col>
+            </ion-row>            
+            <ion-row>
+              <ion-col col-4><strong>Created</strong></ion-col>
+              <ion-col col-8>{{campaign.Created | date}}</ion-col>
+            </ion-row>
+            <ion-row *ngIf="campaignViewed == true && campaign.ClickWorkerConfirmationCode == 'null'">
+              <ion-col col-4>Code </ion-col>
+              <ion-col col-4>{{campaign.ClickWorkerConfirmationCode}}</ion-col>
+            </ion-row>
+            <ion-row *ngIf="campaignViewed == false && campaignIsExpired == false" style="margin-top: 30px;">
+              <ion-col col-8 offset-4>
+                <button (click)="openUrlCampaignPageToView($event, campaign)" ion-button>Open Url</button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-content>

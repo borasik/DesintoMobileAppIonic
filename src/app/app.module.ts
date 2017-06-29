@@ -13,6 +13,7 @@ import { Configuration } from '../configurations';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { CampaignPage } from '../pages/campaign/campaign';
+import { CampaignUrlPage } from '../pages/campaignUrl/campaignUrl';
 import { CampaignsPage } from '../pages/campaigns/campaigns';
 import { LoginPage } from '../pages/login/login';
 import { TestPage } from '../pages/appavailabilitytest/test';
@@ -40,6 +41,7 @@ const cloudSettings: CloudSettings = {
     HomePage,
     CampaignsPage,
     CampaignPage,
+    CampaignUrlPage,
     LoginPage,
     TestPage,
     LandingPage,
@@ -58,7 +60,8 @@ const cloudSettings: CloudSettings = {
     MyApp,
     HomePage,
     CampaignsPage,
-    CampaignPage,
+    CampaignPage,    
+    CampaignUrlPage,
     LoginPage,
     TestPage,
     LandingPage,

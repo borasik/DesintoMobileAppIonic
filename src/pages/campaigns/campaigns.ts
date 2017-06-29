@@ -1,6 +1,7 @@
 import { Component, OnInit, Pipe } from '@angular/core';
-import { NavController, NavParams, LoadingController, Loading, Platform } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, Loading, Platform, AlertController} from 'ionic-angular';
 import { CampaignPage } from '../campaign/campaign';
+import { CampaignUrlPage } from '../campaignUrl/campaignUrl';
 import { DataServiceGateway } from '../../services/data-gateway-service';
 import { CustomerCampaignsRequest } from '../../models/customer-campaigns-request';
 import { LoginPage } from '../login/login';
@@ -19,16 +20,25 @@ export class CampaignsPage {
   private loginPage = LoginPage;
 
   constructor(public navCtrl: NavController, private loadingCtrl: LoadingController, public navParams: NavParams, private dataServiceGateway: DataServiceGateway,
-              private configurations: Configuration,  private platform: Platform) 
-  {
+    private configurations: Configuration, private platform: Platform, private alertCtrl: AlertController) {
     this.campaigns = [];
     this.thumpUrlPrefix = configurations.ApiServer;
   }
 
   itemTapped(event, campaign) {
-    this.navCtrl.push(CampaignPage, {
-      campaign: campaign
-    });
+    if (campaign.ContentType === 2) {
+      this.navCtrl.push(CampaignPage, {
+        campaign: campaign
+      });
+    }
+    else if (campaign.ContentType === 0) {
+      this.navCtrl.push(CampaignUrlPage, {
+        campaign: campaign
+      });      
+    }
+    else{
+        this.presentAlert();
+      };
   }
 
   contentType(campaign) {
@@ -56,24 +66,24 @@ export class CampaignsPage {
 
     var customerCampaignModel = new CustomerCampaignsRequest(token);
     this.dataServiceGateway.post("customercampaignsapi/getcampaigns", customerCampaignModel).subscribe(
-      (response) => {     
+      (response) => {
         if (this.platform.is('ios')) {
-          this.campaigns = response.campaigns.filter(x => x.ApplicationPlatform == 2);
+          this.campaigns = response.campaigns.filter(x => x.ApplicationPlatform == 2);//Add URL and Flyer Campaigns
         }
         else if (this.platform.is('android')) {
-          this.campaigns = response.campaigns.filter(x => x.ApplicationPlatform == 1);
+          this.campaigns = response.campaigns.filter(x => x.ApplicationPlatform == 1);//Add URL and Flyer Campaigns
         }
-        else{
+        else {
           this.campaigns = response.campaigns;
         }
 
       },
       (err) => {
-         this.loading.dismiss();
+        this.loading.dismiss();
         console.log("ERROR: " + err);
       },
       () => {
-         this.loading.dismiss();
+        this.loading.dismiss();
         console.log("COMPLETED");
       });
   }
@@ -83,6 +93,15 @@ export class CampaignsPage {
       content: 'Please wait...'
     });
     this.loading.present();
+  }
+
+  presentAlert() {
+    let alert = this.alertCtrl.create({
+      title: 'Campaign Type not Supported',
+      subTitle: 'Sorry this campaign type not supported by mobile application. We are working on it. Please use Desinto Web Site to view this type of campaigns. Thank You!',
+      buttons: ['Dismiss']
+    });
+    alert.present();
   }
 
 }
