@@ -5,21 +5,40 @@ page-campaigns {
 }
 
 @media (min-width: 500px) {
-    html { font-size: 80%; }
+   
 }
-
-@media (min-width: 700px) {
-    html { font-size: 120%; }
+@media (min-width: 568px) {
+   
 }
-
-@media (min-width: 1200px) {
-   ion-col{font-size:200%}
+@media (min-width: 768px) {
+   
+}
+@media (min-width: 1024px) {
+    ion-col{font-size:150%}
    .toolbar-title {
-     font-size:40px !important;
+     font-size:3rem !important;
    }
    .button-inner{
       font-size:40px !important;
    }
+}
+@media (min-width: 1136px) {
+    
+}
+@media (min-width: 1200px) {
+    
+}
+@media (min-width: 1334px) {
+      ion-col{font-size:100%}
+   .toolbar-title {
+     font-size:2rem !important;
+   }
+   .button-inner{
+      font-size:40px !important;
+   }
+}
+@media (min-width: 2208px) {
+    
 }
 
 .well {

@@ -5,17 +5,68 @@ page-login {
 }
 
 @media (min-width: 500px) {
-    html { font-size: 80%; }
+    ion-input{ font-size: 25px; }
+    #submitBtn 
+    { 
+      font-size: 25px; 
+      height: 4rem;
+    }
 }
-
-@media (min-width: 700px) {
-    html { font-size: 120%; }
+@media (min-width: 568px) {
+    ion-input{ font-size: 20px; }
+    #submitBtn 
+    { 
+      font-size: 20px; 
+      height: 3rem;
+    }
 }
-
+@media (min-width: 768px) {
+   ion-input{ font-size: 25px; }
+    #submitBtn 
+    { 
+      font-size: 25px; 
+      height: 4rem;
+    }
+}
+@media (min-width: 1024px) {
+    ion-input{ font-size: 20px; }
+    #submitBtn 
+    { 
+      font-size: 20px; 
+      height: 4rem;
+    }
+}
+@media (min-width: 1136px) {
+    ion-input{ font-size: 20px; }
+    #submitBtn 
+    { 
+      font-size: 20px; 
+      height: 4rem;
+    }
+}
 @media (min-width: 1200px) {
     ion-input{ font-size: 30px; }
-
-    #submitBtn { font-size: 30px; }
+    #submitBtn 
+    { 
+      font-size: 30px; 
+      height: 6rem;
+    }
+}
+@media (min-width: 1334px) {
+    ion-input{ font-size: 20px; }
+    #submitBtn 
+    { 
+      font-size: 20px; 
+      height: 4rem;
+    }
+}
+@media (min-width: 2208px) {
+    ion-input{ font-size: 30px; }
+    #submitBtn 
+    { 
+      font-size: 30px; 
+      height: 5rem;
+    }
 }
 
     img{

@@ -6,7 +6,7 @@
     </ion-col>
     <ion-col></ion-col>
   </ion-row>
-  <div class="login-box" col-xl-6 offset-3>
+  <div class="login-box" col-xl-6 offset-xl-3 col-xs-12 col-lg-6 offset-lg-3>
     <form (ngSubmit)="login()" #registerForm="ngForm">
       <ion-row>
         <ion-col>
@@ -22,8 +22,10 @@
       </ion-row>
       
       <ion-row>
-        <ion-col class="signup-col" col-xl-4 offset-2>
-          <button id="submitBtn" ion-button class="submit-btn" full type="submit" [disabled]="!registerForm.form.valid">Login</button>          
+        <ion-col class="signup-col">
+          <div col-xl-4 offset-xl-4 col-sm-6 offset-sm-3 col-md-4 offset-md-4 col-xs-4 offset-xs-4 col-md-4 offset-md-4>
+          <button id="submitBtn" ion-button class="submit-btn" full type="submit" [disabled]="!registerForm.form.valid">Login</button>       
+          </div>   
         </ion-col>
       </ion-row>
       
