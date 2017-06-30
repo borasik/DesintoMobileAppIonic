@@ -38,7 +38,13 @@ page-campaigns {
    }
 }
 @media (min-width: 2208px) {
-    
+   ion-col{font-size:150%}
+   .toolbar-title {
+     font-size:2rem !important;
+   }
+   .button-inner{
+      font-size:40px !important;
+   }
 }
 
 .well {
