@@ -8,18 +8,40 @@ page-campaigns {
    
 }
 @media (min-width: 568px) {
-   
+    ion-col{font-size:150%}
+
+   .bar-button-menutoggle-ios ion-icon{
+     font-size: 4.8rem !important;
+   }
+
+   .bar-button-menutoggle-ios{
+      margin-bottom: 10px; 
+   }
+
+    .toolbar-title {
+     font-size: 3rem !important;
+   }
 }
 @media (min-width: 768px) {
    
 }
 @media (min-width: 1024px) {
+  .bar-button-menutoggle-md ion-icon{
+      font-size: 4.8rem !important;
+  }
+   .bar-button-default-md, .bar-button-clear-md-default, .bar-button-md-default{
+      margin-bottom: 20px; 
+   }
+
     ion-col{font-size:150%}
    .toolbar-title {
      font-size:3rem !important;
    }
    .button-inner{
       font-size:40px !important;
+   }
+   .bar-button-menutoggle-ios ion-icon{
+     font-size: 3.8rem;
    }
 }
 @media (min-width: 1136px) {

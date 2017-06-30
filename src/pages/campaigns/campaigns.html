@@ -10,52 +10,51 @@
 <ion-content>
     <ion-grid>
         <ion-row>
-           
-                <ion-row *ngIf="campaigns.length === 0">
-                    <ion-col text-center>
+            <ion-row *ngIf="campaigns.length === 0">
+                <ion-col text-center>
                     <h4>Sorry, No Campaigns Available</h4>
-                    </ion-col>
-                </ion-row>
-                <ion-card *ngFor="let campaign of campaigns" (click)="itemTapped($event, campaign)"  col-lg-4 col-xl-3>
-                    <img src='{{thumpUrlPrefix + campaign.ThumbUrl}}' />
-                    <ion-card-content>
-                        <ion-card-title>
-                            {{campaign.Name | truncate : [20, '...']}}
-                        </ion-card-title>
-                        <ion-grid>
-                            <ion-row>
-                                <ion-col col-4><strong>Description</strong></ion-col>
-                                <ion-col col-8>{{campaign.Description | truncate : [20, '...']}}</ion-col>
-                            </ion-row>
-                            <ion-row>
-                                <ion-col col-4><strong>Type </strong></ion-col>
-                                <ion-col col-8 *ngIf="campaign.ContentType == 0">Url</ion-col>
-                                <ion-col col-8 *ngIf="campaign.ContentType == 1">Flyer</ion-col>
-                                <ion-col col-8 *ngIf="campaign.ContentType == 2">Downloads Rewards</ion-col>
-                            </ion-row>
-                            <ion-row>
-                                <ion-col col-4><strong>View Price </strong></ion-col>
-                                <ion-col col-8>${{campaign.ViewPrice}}</ion-col>
-                            </ion-row>
-                            <ion-row>
-                                <ion-col col-4><strong>Status </strong></ion-col>
-                                <ion-col col-8 *ngIf="campaign.IsViewed" style="color: #1ABB9C">Viewed</ion-col>
-                                <ion-col col-8 *ngIf="!campaign.IsViewed" style="color: red">Not Viewed</ion-col>
-                            </ion-row>
-                            <ion-row>
-                                <ion-col col-4><strong>Created</strong></ion-col>
-                                <ion-col col-8>{{campaign.Created | date}}</ion-col>
-                            </ion-row>
-                            <ion-row *ngIf="campaign.ExpirationDate != null" style="margin-bottom: 10px;">
-                                <ion-col col-4><strong>Expiration</strong></ion-col>
-                                <ion-col col-8>{{campaign.ExpirationDate | date}}
-                                    <span *ngIf="campaign.IsExpired" style="color: red;font-weight: bold">Expired</span>
-                                </ion-col>
-                            </ion-row>
-                        </ion-grid>
-                    </ion-card-content>
-                </ion-card>
-           
+                </ion-col>
+            </ion-row>
+            <ion-card *ngFor="let campaign of campaigns" (click)="itemTapped($event, campaign)" col-lg-4 col-xl-3>
+                <img src='{{thumpUrlPrefix + campaign.ThumbUrl}}' />
+                <ion-card-content>
+                    <ion-card-title>
+                        {{campaign.Name | truncate : [20, '...']}}
+                    </ion-card-title>
+                    <ion-grid>
+                        <ion-row>
+                            <ion-col col-4><strong>Description</strong></ion-col>
+                            <ion-col col-8>{{campaign.Description | truncate : [20, '...']}}</ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col col-4><strong>Type </strong></ion-col>
+                            <ion-col col-8 *ngIf="campaign.ContentType == 0">Url</ion-col>
+                            <ion-col col-8 *ngIf="campaign.ContentType == 1">Flyer</ion-col>
+                            <ion-col col-8 *ngIf="campaign.ContentType == 2">Downloads Rewards</ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col col-4><strong>View Price </strong></ion-col>
+                            <ion-col col-8>${{campaign.ViewPrice}}</ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col col-4><strong>Status </strong></ion-col>
+                            <ion-col col-8 *ngIf="campaign.IsViewed" style="color: #1ABB9C">Viewed</ion-col>
+                            <ion-col col-8 *ngIf="!campaign.IsViewed" style="color: red">Not Viewed</ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col col-4><strong>Created</strong></ion-col>
+                            <ion-col col-8>{{campaign.Created | date}}</ion-col>
+                        </ion-row>
+                        <ion-row *ngIf="campaign.ExpirationDate != null" style="margin-bottom: 10px;">
+                            <ion-col col-4><strong>Expiration</strong></ion-col>
+                            <ion-col col-8>{{campaign.ExpirationDate | date}}
+                                <span *ngIf="campaign.IsExpired" style="color: red;font-weight: bold">Expired</span>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </ion-card-content>
+            </ion-card>
+
         </ion-row>
     </ion-grid>
 </ion-content>
