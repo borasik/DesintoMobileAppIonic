@@ -1,7 +1,10 @@
 page-login {
 
-@media (max-width: 300px) {
+@media (min-width: 300px) {
     html { font-size: 70%; }
+    .login-logo{
+      width: 100px;
+    }
 }
 
 @media (min-width: 500px) {
@@ -11,6 +14,9 @@ page-login {
       font-size: 25px; 
       height: 4rem;
     }
+    .login-logo{
+      width: 100px;
+    }
 }
 @media (min-width: 568px) {
     ion-input{ font-size: 20px; }
@@ -19,6 +25,9 @@ page-login {
       font-size: 20px; 
       height: 3rem;
     }
+    .login-logo{
+      width: 100px;     
+    }
 }
 @media (min-width: 768px) {
    ion-input{ font-size: 25px; }
@@ -26,6 +35,9 @@ page-login {
     { 
       font-size: 25px; 
       height: 4rem;
+    }
+    .login-logo{
+      width: 200px;     
     }
 }
 @media (min-width: 1024px) {
@@ -43,13 +55,22 @@ page-login {
       font-size: 20px; 
       height: 4rem;
     }
+    .login-logo{
+      width: 400px;     
+    }
 }
 @media (min-width: 1200px) {
-    ion-input{ font-size: 30px; }
+    ion-input{ font-size: 40px; }
     #submitBtn 
     { 
       font-size: 30px; 
       height: 6rem;
+    }
+    .login-box{
+      margin-top:70px;
+    }
+    .login-logo{
+      width: 400px;     
     }
 }
 @media (min-width: 1334px) {
@@ -59,6 +80,9 @@ page-login {
       font-size: 20px; 
       height: 4rem;
     }
+    .login-logo{
+      width: 400px;     
+    }
 }
 @media (min-width: 2208px) {
     ion-input{ font-size: 30px; }
@@ -66,6 +90,9 @@ page-login {
     { 
       font-size: 30px; 
       height: 5rem;
+    }
+    .login-logo{
+      width: 400px;     
     }
 }
 
@@ -84,7 +111,7 @@ page-login {
     .login-box {
       background: #2E64FE;
       padding: 20px 20px 0px 20px;
-      margin-top: 30px;
+      // margin-top: 30px;
     }
  
     ion-row {

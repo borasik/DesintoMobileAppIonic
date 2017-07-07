@@ -9,12 +9,12 @@
 
 <ion-content>
     <ion-grid>
-        <ion-row>
+       
             <ion-row *ngIf="campaigns.length === 0">
-                <ion-col text-center>
+                <ion-col col-10 offset-1>
                     <h4>Sorry, No Campaigns Available</h4>
                 </ion-col>
-            </ion-row>
+          
             <ion-card *ngFor="let campaign of campaigns" (click)="itemTapped($event, campaign)" col-lg-4 col-xl-3>
                 <img src='{{thumpUrlPrefix + campaign.ThumbUrl}}' />
                 <ion-card-content>
