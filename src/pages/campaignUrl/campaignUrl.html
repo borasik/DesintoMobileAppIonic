@@ -48,7 +48,7 @@
               <ion-col col-4>Code </ion-col>
               <ion-col col-4>{{campaign.ClickWorkerConfirmationCode}}</ion-col>
             </ion-row>
-            <ion-row *ngIf="campaignViewed == false && campaignIsExpired == false" style="margin-top: 30px;">
+            <ion-row style="margin-top: 30px;">
               <ion-col col-8 offset-4>
                 <button (click)="openUrlCampaignPageToView($event, campaign)" ion-button>Open Url</button>
               </ion-col>
