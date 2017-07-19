@@ -15,6 +15,7 @@ import { HomePage } from '../pages/home/home';
 import { CampaignPage } from '../pages/campaign/campaign';
 import { CampaignUrlPage } from '../pages/campaignUrl/campaignUrl';
 import { CampaignsPage } from '../pages/campaigns/campaigns';
+import { UserProfilePage } from '../pages/user-profile/user-profile';
 import { LoginPage } from '../pages/login/login';
 import { TestPage } from '../pages/appavailabilitytest/test';
 import { LandingPage } from '../pages/landing/landing';
@@ -42,6 +43,7 @@ const cloudSettings: CloudSettings = {
     CampaignsPage,
     CampaignPage,
     CampaignUrlPage,
+    UserProfilePage,
     LoginPage,
     TestPage,
     LandingPage,
@@ -65,7 +67,8 @@ const cloudSettings: CloudSettings = {
     LoginPage,
     TestPage,
     LandingPage,
-    LogoutPage
+    LogoutPage,
+    UserProfilePage
   ],
   providers: [
     StatusBar,
